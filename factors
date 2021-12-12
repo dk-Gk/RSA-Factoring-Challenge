@@ -1,10 +1,20 @@
 #!/usr/bin/python3
 from sys import argv
+from math import sqrt
 with open(argv[1]) as rs:
     for j in rs:
         num = int(j)
-        for i in range(2,num):
-            if num % i == 0:
-                r = num // i
-                print("{}={}*{}".format(num, i, r))
-                break
+        if num > 1000000:
+            r = int(sqrt(num))
+            if r % 2 == 0:
+                r += 1
+            for i in range(3, r + 1, 2):
+                if num % i == 0:
+                    print("{}={}*{}".format(num, i, num//i))
+                    break
+        else:
+            for i in range(2,num):
+                if num % i == 0:
+                    r = num // i
+                    print("{}={}*{}".format(num, i, r))
+                    break
